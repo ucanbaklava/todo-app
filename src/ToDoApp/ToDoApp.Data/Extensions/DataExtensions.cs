@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.Data.Contexts;
+using ToDoApp.Data.Repository;
+using ToDoApp.Data.UOW;
 using ToDoApp.Domain.Entities;
 
 namespace ToDoApp.Data.Extensions
@@ -34,6 +36,14 @@ namespace ToDoApp.Data.Extensions
                 options.UseNpgsql(connectionString);
             });
             return serviceCollection;
+        }
+
+        public static IServiceCollection RegisterRepositories(this IServiceCollection services)
+        {
+            services.AddTransient<IToDoRepository, ToDoRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+            return services;
         }
 
     }

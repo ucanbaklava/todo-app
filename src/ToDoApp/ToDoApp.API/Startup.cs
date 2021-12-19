@@ -11,6 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ToDoApp.API.Middlewares;
+using ToDoApp.Application.Extensions;
+using ToDoApp.Data.Contexts;
+using ToDoApp.Data.Extensions;
 
 namespace ToDoApp.API
 {
@@ -26,7 +30,11 @@ namespace ToDoApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.SetupData(Configuration.GetConnectionString("postgresql"));
 
+            services.SetupApplication();
+            services.RegisterRepositories();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -35,16 +43,19 @@ namespace ToDoApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ToDoAppContext context)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDoApp.API v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDoApp.API v1"));
+            
+            context.Database.EnsureCreated();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
 

@@ -9,7 +9,7 @@ Yet another To-Do application.
 
 ## CI-CD
 
-<center>![example workflow](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg)
+<center>![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg)
 </center>
 <hr>
 

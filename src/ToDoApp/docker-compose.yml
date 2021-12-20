@@ -2,7 +2,9 @@ version: '3.4'
 
 services:
   todoapi:
-    image: ucanbaklava/todoapp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 5000:80
     depends_on:

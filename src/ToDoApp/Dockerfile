@@ -17,7 +17,8 @@ RUN dotnet restore  ToDoApp.API/ToDoApp.API.csproj
 COPY . .
 WORKDIR /src/ToDoApp.API
 RUN dotnet build ToDoApp.API.csproj -c Release -o /app/build
-RUN dotnet test
+RUN dotnet test ../ToDoApp.Tests/ToDoApp.Tests.csproj
+
 FROM build as publish
 RUN dotnet publish ToDoApp.API.csproj -c Release -o /app/publish
 

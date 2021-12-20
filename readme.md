@@ -46,7 +46,7 @@ GET
     * Code: 200
     * Content =>  
     ```json
-    [{"id": 1, "task": "Do dishes", "completed": false,  "createdAt": "2021-12-18T...}, ...] 
+    [{"id": 1, "task": "Do dishes", "completed": false,  "createdAt": "2021-12-18T..."}] 
     ```
 
 

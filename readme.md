@@ -9,8 +9,9 @@ Yet another To-Do application.
 
 ## CI-CD
 
-<center>![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg?raw=true)
-</center>
+![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg?raw=true)
+![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg)
+
 <hr>
 
 Github Actions configuration is triggered when changes pushed to ```main``` branch. There are 3 Github secrets for this pipeline to deploy successfully to a remote server.

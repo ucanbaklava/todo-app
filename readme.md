@@ -10,7 +10,6 @@ Yet another To-Do application.
 ## CI-CD
 
 ![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg?raw=true)
-![CI](https://github.com/ucanbaklava/todo-app/actions/workflows/publish.yml/badge.svg)
 
 <hr>
 
